@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div class="container">
+        <label for="celsius"><b>Celsius:</b></label>
+        <input type="text" id="celsius" placeholder="Enter Celsius">
+        <button onclick="convertToAll()">Convert</button>
+
+        <div class="result">
+            <label for="Fahrenheit"><b>Fahrenheit:</b></label>
+            <input type="text" id="fahrenheit" placeholder="Fahrenheit">
+        </div>
+        <div class="result">
+            <label for="Kelvin"><b>Kelvin:</b></label>
+            <input type="text" id="kelvin" placeholder="Kelvin">
+        </div>
+        <button onclick="resetConverter()">Reset</button>
+    </div>
+
+    <script>
+        function convertToAll() {
+            const celsius = parseFloat(document.getElementById('celsius').value);
+            if (!isNaN(celsius)) {
+                const fahrenheit = (celsius * 9 / 5) + 32;
+                const kelvin = celsius + 273.15;
+
+                document.getElementById('fahrenheit').value = fahrenheit.toFixed(2) + ' °F';
+                document.getElementById('kelvin').value = kelvin.toFixed(2) + ' K';
+            } else {
+                alert('Please enter a valid temperature in Celsius.');
+            }
+        }
+
+        function resetConverter() {
+            document.getElementById('celsius').value = '';
+            document.getElementById('fahrenheit').value = '';
+            document.getElementById('kelvin').value = '';
+        }
+    </script>
+</body>
+</html>
